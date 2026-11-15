@@ -42,7 +42,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [304, 24.0]
+    coordinate: [264, 8.0]
     rotation: 0
     state: enabled
 - name: fft_len
@@ -54,7 +54,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [752, 48.0]
+    coordinate: [640, 8.0]
     rotation: 0
     state: enabled
 - name: packet_len
@@ -66,7 +66,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [632, 56.0]
+    coordinate: [544, 8.0]
     rotation: 0
     state: enabled
 - name: samp_rate
@@ -78,7 +78,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [200, 12]
+    coordinate: [168, 8.0]
     rotation: 0
     state: enabled
 - name: tx_amp
@@ -90,7 +90,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [544, 40.0]
+    coordinate: [456, 8.0]
     rotation: 0
     state: enabled
 - name: tx_gain
@@ -102,7 +102,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [440, 32.0]
+    coordinate: [376, 8.0]
     rotation: 0
     state: enabled
 - name: blocks_file_source_0
@@ -112,19 +112,19 @@ blocks:
     alias: ''
     begin_tag: pmt.PMT_NIL
     comment: ''
-    file: /home/engelmf/IT465_Lab2/message.bin
+    file: /home/dinhjx/IT465 Capstone/binary-output.bin
     length: '0'
     maxoutbuf: '0'
     minoutbuf: '0'
     offset: '0'
-    repeat: 'False'
+    repeat: 'True'
     type: byte
     vlen: '1'
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [184, 184.0]
+    coordinate: [16, 192.0]
     rotation: 0
     state: enabled
 - name: blocks_multiply_const_vxx_0
@@ -142,7 +142,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [976, 232.0]
+    coordinate: [728, 224.0]
     rotation: 0
     state: enabled
 - name: blocks_stream_to_tagged_stream_0
@@ -161,7 +161,28 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [416, 208.0]
+    coordinate: [248, 216.0]
+    rotation: 0
+    state: enabled
+- name: digital_burst_shaper_xx_0
+  id: digital_burst_shaper_xx
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    insert_phasing: 'False'
+    length_tag_name: packet_len
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    post_padding: '10000'
+    pre_padding: '10000'
+    type: complex
+    window: ([])
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [896, 192.0]
     rotation: 0
     state: enabled
 - name: digital_ofdm_tx_0
@@ -189,11 +210,11 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [696, 164.0]
+    coordinate: [496, 148.0]
     rotation: 0
     state: enabled
-- name: qtgui_freq_sink_x_0
-  id: qtgui_freq_sink_x
+- name: qtgui_waterfall_sink_x_0
+  id: qtgui_waterfall_sink_x
   parameters:
     affinity: ''
     alias: ''
@@ -207,70 +228,50 @@ blocks:
     alpha7: '1.0'
     alpha8: '1.0'
     alpha9: '1.0'
-    autoscale: 'False'
-    average: '1.0'
     axislabels: 'True'
-    bw: 1e6
-    color1: '"blue"'
-    color10: '"dark blue"'
-    color2: '"red"'
-    color3: '"green"'
-    color4: '"black"'
-    color5: '"cyan"'
-    color6: '"magenta"'
-    color7: '"yellow"'
-    color8: '"dark red"'
-    color9: '"dark green"'
+    bw: samp_rate
+    color1: '0'
+    color10: '0'
+    color2: '0'
+    color3: '0'
+    color4: '0'
+    color5: '0'
+    color6: '0'
+    color7: '0'
+    color8: '0'
+    color9: '0'
     comment: ''
-    ctrlpanel: 'False'
-    fc: 2.43e9
-    fftsize: '2048'
+    fc: center_freq
+    fftsize: '1024'
     freqhalf: 'True'
-    grid: 'True'
+    grid: 'False'
     gui_hint: ''
-    label: Relative Gain
+    int_max: '10'
+    int_min: '-140'
     label1: ''
-    label10: ''''''
-    label2: ''''''
-    label3: ''''''
-    label4: ''''''
-    label5: ''''''
-    label6: ''''''
-    label7: ''''''
-    label8: ''''''
-    label9: ''''''
+    label10: ''
+    label2: ''
+    label3: ''
+    label4: ''
+    label5: ''
+    label6: ''
+    label7: ''
+    label8: ''
+    label9: ''
     legend: 'True'
     maxoutbuf: '0'
     minoutbuf: '0'
-    name: Spectrum
+    name: '""'
     nconnections: '1'
-    norm_window: 'False'
     showports: 'False'
-    tr_chan: '0'
-    tr_level: '0.0'
-    tr_mode: qtgui.TRIG_MODE_FREE
-    tr_tag: '""'
     type: complex
-    units: dB
     update_time: '0.10'
-    width1: '1'
-    width10: '1'
-    width2: '1'
-    width3: '1'
-    width4: '1'
-    width5: '1'
-    width6: '1'
-    width7: '1'
-    width8: '1'
-    width9: '1'
     wintype: window.WIN_BLACKMAN_hARRIS
-    ymax: '0'
-    ymin: '-120'
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1192, 288.0]
+    coordinate: [1168, 280.0]
     rotation: 0
     state: enabled
 - name: uhd_usrp_sink_0
@@ -547,15 +548,16 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1192, 64.0]
+    coordinate: [1168, 108.0]
     rotation: 0
     state: enabled
 
 connections:
 - [blocks_file_source_0, '0', blocks_stream_to_tagged_stream_0, '0']
-- [blocks_multiply_const_vxx_0, '0', qtgui_freq_sink_x_0, '0']
-- [blocks_multiply_const_vxx_0, '0', uhd_usrp_sink_0, '0']
+- [blocks_multiply_const_vxx_0, '0', digital_burst_shaper_xx_0, '0']
 - [blocks_stream_to_tagged_stream_0, '0', digital_ofdm_tx_0, '0']
+- [digital_burst_shaper_xx_0, '0', qtgui_waterfall_sink_x_0, '0']
+- [digital_burst_shaper_xx_0, '0', uhd_usrp_sink_0, '0']
 - [digital_ofdm_tx_0, '0', blocks_multiply_const_vxx_0, '0']
 
 metadata:
