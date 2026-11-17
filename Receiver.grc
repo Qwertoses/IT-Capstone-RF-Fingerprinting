@@ -37,7 +37,7 @@ blocks:
   id: variable
   parameters:
     comment: ''
-    value: 1e9
+    value: 945e6
   states:
     bus_sink: false
     bus_source: false
@@ -45,19 +45,7 @@ blocks:
     coordinate: [248, 24.0]
     rotation: 0
     state: enabled
-- name: dev_id
-  id: variable
-  parameters:
-    comment: ''
-    value: '"A"'
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [512, 24.0]
-    rotation: 0
-    state: enabled
-- name: run_idx
+- name: day_id
   id: variable
   parameters:
     comment: ''
@@ -66,7 +54,31 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [584, 24.0]
+    coordinate: [680, 24.0]
+    rotation: 0
+    state: enabled
+- name: dist_ft
+  id: variable
+  parameters:
+    comment: ''
+    value: '10'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [416, 24.0]
+    rotation: 0
+    state: enabled
+- name: run_id
+  id: variable
+  parameters:
+    comment: ''
+    value: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [752, 24.0]
     rotation: 0
     state: enabled
 - name: rx_gain
@@ -81,6 +93,18 @@ blocks:
     coordinate: [344, 24.0]
     rotation: 0
     state: enabled
+- name: rx_id
+  id: variable
+  parameters:
+    comment: ''
+    value: '"B"'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [616, 24.0]
+    rotation: 0
+    state: enabled
 - name: samp_rate
   id: variable
   parameters:
@@ -93,16 +117,16 @@ blocks:
     coordinate: [160, 24.0]
     rotation: 0
     state: enabled
-- name: transmitter_id
+- name: tx_id
   id: variable
   parameters:
     comment: ''
-    value: '"B"'
+    value: '"A"'
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [656, 24.0]
+    coordinate: [552, 24.0]
     rotation: 0
     state: enabled
 - name: blocks_head_0
@@ -131,8 +155,8 @@ blocks:
     author: JD
     center_freq: center_freq
     comment: ''
-    description: f"Transmitter_{transmitter_id}"
-    filename: f"Device_{dev_id}_run_{run_idx}_center_freq_{int(center_freq/1e6)}"
+    description: f"TX:{tx_id} RX:{rx_id} Dist:{dist_ft}ft Day:{day_id} Run:{run_id}"
+    filename: f"TX_{tx_id}_RX_{rx_id}_fc_{int(center_freq/1e6)}M_dist_{dist_ft}ft_day_{day_id}_run_{run_id}"
     hw_info: USRP B210
     sample_rate: samp_rate
     type: complex float (fc32_le)
@@ -140,7 +164,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [456, 472.0]
+    coordinate: [656, 376.0]
     rotation: 0
     state: enabled
 - name: qtgui_freq_sink_x_0
@@ -354,7 +378,7 @@ blocks:
     bw7: '0'
     bw8: '0'
     bw9: '0'
-    center_freq0: center_freq
+    center_freq0: uhd.tune_request(center_freq, 5e6)
     center_freq1: '0'
     center_freq10: '0'
     center_freq11: '0'
@@ -700,7 +724,7 @@ blocks:
     sd_spec5: ''
     sd_spec6: ''
     sd_spec7: ''
-    show_lo_controls: 'False'
+    show_lo_controls: 'True'
     start_time: '-1.0'
     stream_args: ''
     stream_chans: '[]'
